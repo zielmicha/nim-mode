@@ -49,7 +49,7 @@
 
 (defun nim-find-or-create-epc ()
   "Get the epc responsible for the current buffer."
-  (let ((main-file (nim-find-project-main-file)))
+  (let ((main-file (buffer-file-name)))
     (or (let ((epc-process (cdr (assoc main-file nim-epc-processes-alist))))
           (if (eq 'run (epc:manager-status-server-process epc-process))
               epc-process
